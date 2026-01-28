@@ -1,6 +1,12 @@
 import Link from 'next/link';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import AbcIcon from '@mui/icons-material/Abc';
+import NightsStayIcon from '@mui/icons-material/NightsStay';
+import StarIcon from '@mui/icons-material/Star';
+import StraightenIcon from '@mui/icons-material/Straighten';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 // Tecvid ders kategorileri
 const lessonCategories = [
@@ -16,8 +22,9 @@ const lessonCategories = [
       { id: 'jeem', title: 'Cim (ج)', order: 5 },
       // Diğer harfler eklenecek...
     ],
-    icon: '📝',
-    color: 'bg-blue-50 dark:bg-blue-900/20',
+    Icon: AbcIcon,
+    color: 'bg-royal-blue/10 text-royal-blue',
+    borderColor: 'border-royal-blue/20',
   },
   {
     id: 'noon-rules',
@@ -29,8 +36,9 @@ const lessonCategories = [
       { id: 'iklab', title: 'İklab (إقلاب)', order: 3 },
       { id: 'izhar', title: 'İzhar (إظهار)', order: 4 },
     ],
-    icon: '🌙',
-    color: 'bg-green-50 dark:bg-green-900/20',
+    Icon: NightsStayIcon,
+    color: 'bg-forest/10 text-forest',
+    borderColor: 'border-forest/20',
   },
   {
     id: 'mim-rules',
@@ -41,8 +49,9 @@ const lessonCategories = [
       { id: 'ihfa-shafawi', title: 'İhfa Şefevi', order: 2 },
       { id: 'izhar-shafawi', title: 'İzhar Şefevi', order: 3 },
     ],
-    icon: '⭐',
-    color: 'bg-purple-50 dark:bg-purple-900/20',
+    Icon: StarIcon,
+    color: 'bg-lavender/30 text-purple-700',
+    borderColor: 'border-lavender/40',
   },
   {
     id: 'madd',
@@ -54,53 +63,53 @@ const lessonCategories = [
       { id: 'madd-muttasil', title: 'Med-i Muttasıl', order: 3 },
       { id: 'madd-lazim', title: 'Med-i Lazım', order: 4 },
     ],
-    icon: '📏',
-    color: 'bg-orange-50 dark:bg-orange-900/20',
+    Icon: StraightenIcon,
+    color: 'bg-chili/10 text-chili',
+    borderColor: 'border-chili/20',
   },
 ];
 
 export default function LessonsPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
+    <div className="min-h-screen bg-pearl dark:bg-ink">
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="mb-8">
-          <Link
-            href="/"
-            className="text-green-600 dark:text-green-400 hover:underline mb-4 inline-block"
-          >
-            ← Ana Sayfa
-          </Link>
-          <h1 className="text-4xl font-bold mb-2">Tecvid Dersleri</h1>
-          <p className="text-gray-600 dark:text-gray-400">
+          <Button asChild variant="ghost" className="mb-4">
+            <Link href="/">← Ana Sayfa</Link>
+          </Button>
+          <h1 className="text-4xl font-bold mb-2 text-ink dark:text-pearl">Tecvid Dersleri</h1>
+          <p className="text-chalkboard">
             Kuran-ı Kerim'i doğru okumak için gerekli tecvid kurallarını adım adım öğrenin
           </p>
         </div>
 
         {/* Lesson Categories */}
-        <div className="space-y-8">
+        <div className="space-y-12">
           {lessonCategories.map((category) => (
             <div key={category.id} className="space-y-4">
-              <div className="flex items-center gap-3">
-                <span className="text-3xl">{category.icon}</span>
+              <div className="flex items-center gap-4">
+                <div className={`w-14 h-14 rounded-xl ${category.color} flex items-center justify-center`}>
+                  <category.Icon sx={{ fontSize: 32 }} />
+                </div>
                 <div>
-                  <h2 className="text-2xl font-bold">{category.title}</h2>
-                  <p className="text-gray-600 dark:text-gray-400">
-                    {category.description}
-                  </p>
+                  <h2 className="text-2xl font-bold text-ink dark:text-pearl">{category.title}</h2>
+                  <p className="text-chalkboard">{category.description}</p>
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {category.lessons.map((lesson) => (
                   <Link key={lesson.id} href={`/lessons/${category.id}/${lesson.id}`}>
-                    <Card className="hover:shadow-xl transition-all hover:scale-105 cursor-pointer h-full">
+                    <Card className={`hover:shadow-xl transition-all hover:scale-105 cursor-pointer h-full border-2 ${category.borderColor}`}>
                       <CardHeader>
                         <div className="flex items-center justify-between mb-2">
-                          <Badge variant="secondary">Ders {lesson.order}</Badge>
-                          <span className="text-2xl">→</span>
+                          <Badge variant="secondary" className="bg-pale-blue text-navy">
+                            Ders {lesson.order}
+                          </Badge>
+                          <ArrowForwardIcon className="text-royal-blue" />
                         </div>
-                        <CardTitle className="text-xl">{lesson.title}</CardTitle>
+                        <CardTitle className="text-xl text-ink dark:text-pearl">{lesson.title}</CardTitle>
                       </CardHeader>
                     </Card>
                   </Link>
@@ -111,11 +120,13 @@ export default function LessonsPage() {
         </div>
 
         {/* Coming Soon Badge */}
-        <div className="mt-12 p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg text-center">
-          <p className="text-gray-600 dark:text-gray-400">
-            🚧 Dersler hazırlanıyor... İlk 5 ders yakında yayında!
-          </p>
-        </div>
+        <Card className="mt-12 border-pale-blue/20">
+          <CardHeader className="text-center">
+            <p className="text-chalkboard">
+              🚧 Dersler hazırlanıyor... İlk 5 ders yakında yayında!
+            </p>
+          </CardHeader>
+        </Card>
       </div>
     </div>
   );

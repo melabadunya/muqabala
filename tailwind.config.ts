@@ -11,8 +11,22 @@ export default {
     extend: {
       fontFamily: {
         arabic: ['Amiri Quran', 'Traditional Arabic', 'Arabic Typesetting', 'serif'],
+        quran: ['Amiri Quran', 'serif'],
+        body: ['Inter', 'system-ui', 'sans-serif'],
       },
       colors: {
+        'royal-blue': '#235AF3',
+        'navy': '#002EAD',
+        'pale-blue': '#DBE4FF',
+        'tan': '#F5F3EF',
+        'pearl': '#FAF9F6',
+        'ink': '#1E1E1E',
+        'forest': '#1A342E',
+        'chili': '#FC440F',
+        'lavender': '#D1BCE3',
+        'chalkboard': '#86AFA6',
+        'sage': '#EBEEE4',
+        'neon': '#F5FE76',
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
