@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 
 // Tecvid ders kategorileri
 const lessonCategories = [
@@ -91,18 +93,16 @@ export default function LessonsPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {category.lessons.map((lesson) => (
-                  <Link
-                    key={lesson.id}
-                    href={`/lessons/${category.id}/${lesson.id}`}
-                    className={`p-6 rounded-xl shadow-lg hover:shadow-xl transition-all ${category.color} hover:scale-105`}
-                  >
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm font-semibold text-gray-500 dark:text-gray-400">
-                        Ders {lesson.order}
-                      </span>
-                      <span className="text-2xl">→</span>
-                    </div>
-                    <h3 className="text-xl font-bold">{lesson.title}</h3>
+                  <Link key={lesson.id} href={`/lessons/${category.id}/${lesson.id}`}>
+                    <Card className="hover:shadow-xl transition-all hover:scale-105 cursor-pointer h-full">
+                      <CardHeader>
+                        <div className="flex items-center justify-between mb-2">
+                          <Badge variant="secondary">Ders {lesson.order}</Badge>
+                          <span className="text-2xl">→</span>
+                        </div>
+                        <CardTitle className="text-xl">{lesson.title}</CardTitle>
+                      </CardHeader>
+                    </Card>
                   </Link>
                 ))}
               </div>
