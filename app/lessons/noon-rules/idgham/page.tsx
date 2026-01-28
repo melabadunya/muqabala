@@ -19,14 +19,14 @@ export default async function IdghamLessonPage() {
   let verse2 = null; // من ربهم - Bakara 2:5
   
   try {
-    verse1 = await getVerse('99:7', { words: true });
-    verse2 = await getVerse('2:5', { words: true });
+    verse1 = await getVerse('99:7', { words: false });
+    verse2 = await getVerse('2:5', { words: false });
   } catch (error) {
     console.error('Error fetching verses:', error);
   }
 
   return (
-    <div className="min-h-screen bg-pearl dark:bg-ink">
+    <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         {/* Navigation */}
         <div className="mb-8">
@@ -36,19 +36,19 @@ export default async function IdghamLessonPage() {
         </div>
 
         {/* Lesson Header */}
-        <Card className="mb-8 border-forest/20">
+        <Card className="mb-8">
           <CardHeader>
             <div className="flex items-start gap-4 mb-4">
-              <div className="w-16 h-16 rounded-2xl bg-forest/10 flex items-center justify-center flex-shrink-0">
-                <NightsStayIcon className="text-forest" sx={{ fontSize: 40 }} />
+              <div className="w-16 h-16 rounded-2xl bg-[#1A342E]/10 dark:bg-[#1A342E]/30 flex items-center justify-center flex-shrink-0">
+                <NightsStayIcon className="text-[#1A342E] dark:text-[#86AFA6]" sx={{ fontSize: 40 }} />
               </div>
               <div className="flex-1">
-                <Badge className="mb-2 bg-pale-blue text-navy">Nun Sakin Kuralları - Ders 1</Badge>
-                <CardTitle className="text-4xl mb-2 text-ink dark:text-pearl">İdgam (إدغام)</CardTitle>
+                <Badge className="mb-2 bg-[#235AF3] text-white">Nun Sakin Kuralları - Ders 1</Badge>
+                <CardTitle className="text-4xl mb-2">İdgam (إدغام)</CardTitle>
                 <CardDescription className="flex gap-4 text-base">
                   <span>⏱️ 15 dakika</span>
                   <span>📚 Başlangıç</span>
-                  <span className="text-forest font-semibold">Birleştirme Kuralı</span>
+                  <span className="text-[#1A342E] dark:text-[#86AFA6] font-semibold">Birleştirme Kuralı</span>
                 </CardDescription>
               </div>
             </div>
@@ -58,37 +58,37 @@ export default async function IdghamLessonPage() {
         {/* Lesson Content */}
         <div className="space-y-8">
           {/* Definition Section */}
-          <Card className="border-pale-blue/20">
+          <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-ink dark:text-pearl">
-                <MenuBookIcon className="text-royal-blue" />
+              <CardTitle className="flex items-center gap-2">
+                <MenuBookIcon className="text-[#235AF3]" />
                 İdgam Nedir?
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <p className="text-lg text-ink dark:text-pearl">
+              <p className="text-lg">
                 <strong>İdgam (إدغام)</strong> Arapça'da "birleştirme, sokma" anlamına gelir. 
                 Tecvid ilminde, <strong>Nun Sakin (نْ)</strong> veya <strong>Tenvin</strong> sonrasında 
                 6 özel harf geldiğinde uygulanan kuraldır.
               </p>
               
-                <Card className="bg-royal-blue/10 border-royal-blue/30">
-                <CardContent className="pt-4">
+              <Card className="bg-[#235AF3]/10 border-[#235AF3]/30">
+                <CardContent className="pt-6">
                   <div className="flex items-start gap-3">
-                    <GpsFixedIcon className="text-royal-blue mt-1" />
-                    <div>
-                      <p className="text-base font-bold text-royal-blue mb-2">
+                    <GpsFixedIcon className="text-[#235AF3] mt-1" />
+                    <div className="flex-1">
+                      <p className="text-base font-bold text-[#002EAD] dark:text-[#DBE4FF] mb-3">
                         Hatırlatma Tekniği: YERMUN Kelimesi
                       </p>
-                      <p className="text-base text-ink dark:text-pearl mb-3">
+                      <p className="text-base mb-4">
                         İdgam harfleri için 
-                        <span className="font-quran text-2xl mx-2" dir="rtl">يرملون</span> 
+                        <span className="font-arabic text-3xl mx-2" dir="rtl">يرملون</span> 
                         kelimesini ezberleyin!
                       </p>
-                      <div className="grid grid-cols-6 gap-2 mt-2">
+                      <div className="grid grid-cols-6 gap-3">
                         {['ي', 'ر', 'م', 'ل', 'و', 'ن'].map((letter, idx) => (
-                          <div key={idx} className="text-center p-3 bg-white dark:bg-gray-800 rounded-lg shadow-sm border-2 border-royal-blue/20">
-                            <span className="text-3xl font-quran text-ink dark:text-pearl" dir="rtl">{letter}</span>
+                          <div key={idx} className="text-center p-4 bg-white dark:bg-[#1E1E1E] rounded-lg border-2 border-[#235AF3]/30">
+                            <span className="text-4xl font-arabic text-foreground" dir="rtl">{letter}</span>
                           </div>
                         ))}
                       </div>
@@ -100,33 +100,33 @@ export default async function IdghamLessonPage() {
           </Card>
 
           {/* Types Section */}
-          <Card className="border-pale-blue/20">
+          <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-ink dark:text-pearl">
-                <GpsFixedIcon className="text-royal-blue" />
+              <CardTitle className="flex items-center gap-2">
+                <GpsFixedIcon className="text-[#235AF3]" />
                 İdgam'ın İki Türü
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
               {/* Idgham with Ghunnah */}
               <div>
-                <h3 className="text-xl font-bold mb-3 flex items-center gap-2 text-ink dark:text-pearl">
-                  <span className="text-forest">1.</span>
+                <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
+                  <span className="text-[#1A342E] dark:text-[#86AFA6]">1.</span>
                   İdgam bi-Ghunne (غنة ile)
                 </h3>
-                <Card className="bg-forest/10 border-forest/30">
-                  <CardContent className="pt-4 space-y-3">
-                    <p className="text-ink dark:text-pearl text-base"><strong>4 Harf:</strong> ي، ن، م، و (Ye, Nun, Mim, Vav)</p>
-                    <p className="text-ink dark:text-pearl text-base"><strong>Özellik:</strong> Genizden ses (ghunne) ile 2 hareke süresince okunur</p>
-                    <div className="flex gap-2 flex-wrap mt-2">
+                <Card className="bg-[#1A342E]/10 dark:bg-[#1A342E]/30 border-[#1A342E]/30">
+                  <CardContent className="pt-6 space-y-4">
+                    <p className="text-base"><strong>4 Harf:</strong> ي، ن، م، و (Ye, Nun, Mim, Vav)</p>
+                    <p className="text-base"><strong>Özellik:</strong> Genizden ses (ghunne) ile 2 hareke süresince okunur</p>
+                    <div className="flex gap-2 flex-wrap mt-3">
                       {[
                         { letter: 'ي', name: 'Ye' },
                         { letter: 'ن', name: 'Nun' },
                         { letter: 'م', name: 'Mim' },
                         { letter: 'و', name: 'Vav' }
                       ].map((item) => (
-                        <Badge key={item.letter} className="text-base bg-forest text-white">
-                          <span className="font-quran text-xl mr-1" dir="rtl">{item.letter}</span>
+                        <Badge key={item.letter} className="text-lg px-4 py-2 bg-[#1A342E] text-white">
+                          <span className="font-arabic text-2xl mr-2" dir="rtl">{item.letter}</span>
                           {item.name}
                         </Badge>
                       ))}
@@ -137,21 +137,21 @@ export default async function IdghamLessonPage() {
 
               {/* Idgham without Ghunnah */}
               <div>
-                <h3 className="text-xl font-bold mb-3 flex items-center gap-2 text-ink dark:text-pearl">
-                  <span className="text-royal-blue">2.</span>
+                <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
+                  <span className="text-[#235AF3]">2.</span>
                   İdgam bila-Ghunne (غنة siz)
                 </h3>
-                <Card className="bg-royal-blue/10 border-royal-blue/30">
-                  <CardContent className="pt-4 space-y-3">
-                    <p className="text-ink dark:text-pearl text-base"><strong>2 Harf:</strong> ل، ر (Lam, Ra)</p>
-                    <p className="text-ink dark:text-pearl text-base"><strong>Özellik:</strong> Ghunne OLMADAN, direkt birleştirme</p>
-                    <div className="flex gap-2 flex-wrap mt-2">
+                <Card className="bg-[#235AF3]/10 border-[#235AF3]/30">
+                  <CardContent className="pt-6 space-y-4">
+                    <p className="text-base"><strong>2 Harf:</strong> ل، ر (Lam, Ra)</p>
+                    <p className="text-base"><strong>Özellik:</strong> Ghunne OLMADAN, direkt birleştirme</p>
+                    <div className="flex gap-2 flex-wrap mt-3">
                       {[
                         { letter: 'ل', name: 'Lam' },
                         { letter: 'ر', name: 'Ra' }
                       ].map((item) => (
-                        <Badge key={item.letter} className="text-base bg-royal-blue text-white">
-                          <span className="font-quran text-xl mr-1" dir="rtl">{item.letter}</span>
+                        <Badge key={item.letter} className="text-lg px-4 py-2 bg-[#235AF3] text-white">
+                          <span className="font-arabic text-2xl mr-2" dir="rtl">{item.letter}</span>
                           {item.name}
                         </Badge>
                       ))}
@@ -163,24 +163,24 @@ export default async function IdghamLessonPage() {
           </Card>
 
           {/* How to Pronounce */}
-          <Card className="border-pale-blue/20">
+          <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-ink dark:text-pearl">
-                <RecordVoiceOverIcon className="text-royal-blue" />
+              <CardTitle className="flex items-center gap-2">
+                <RecordVoiceOverIcon className="text-[#235AF3]" />
                 Nasıl Okunur?
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Card className="bg-forest/10 border-forest/30">
+                <Card className="bg-[#1A342E]/10 dark:bg-[#1A342E]/30 border-[#1A342E]/30">
                   <CardHeader>
-                    <CardTitle className="text-lg flex items-center gap-2 text-forest">
+                    <CardTitle className="text-lg flex items-center gap-2 text-[#1A342E] dark:text-[#86AFA6]">
                       <CheckCircleIcon />
                       Doğru
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <ul className="space-y-2 text-base text-ink dark:text-pearl">
+                    <ul className="space-y-2 text-base">
                       <li>• <strong>Bi-ghunne:</strong> Genizden 2 hareke ses</li>
                       <li>• Nun/Tenvin kaybolur, harf güçlenir</li>
                       <li>• Ghunne nazal (burundan) olmalı</li>
@@ -189,15 +189,15 @@ export default async function IdghamLessonPage() {
                     </ul>
                   </CardContent>
                 </Card>
-                <Card className="bg-chili/10 border-chili/30">
+                <Card className="bg-[#FC440F]/10 dark:bg-[#FC440F]/20 border-[#FC440F]/30">
                   <CardHeader>
-                    <CardTitle className="text-lg flex items-center gap-2 text-chili">
+                    <CardTitle className="text-lg flex items-center gap-2 text-[#FC440F]">
                       <CancelIcon />
                       Yanlış
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <ul className="space-y-2 text-base text-ink dark:text-pearl">
+                    <ul className="space-y-2 text-base">
                       <li>• Nun/Tenvin'i telaffuz etmek</li>
                       <li>• Ghunne'yi çok kısa yapmak</li>
                       <li>• Bila-ghunne'de ghunne yapmak</li>
@@ -212,10 +212,10 @@ export default async function IdghamLessonPage() {
 
           {/* Quran Examples */}
           {(verse1 || verse2) && (
-            <Card className="border-pale-blue/20">
+            <Card>
               <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-ink dark:text-pearl">
-                  <MenuBookIcon className="text-royal-blue" />
+                <CardTitle className="flex items-center gap-2">
+                  <MenuBookIcon className="text-[#235AF3]" />
                   Kuran'dan Örnekler
                 </CardTitle>
               </CardHeader>
@@ -223,22 +223,24 @@ export default async function IdghamLessonPage() {
                 {/* Idgham bi-ghunne example */}
                 {verse1 && (
                   <div>
-                    <Badge className="mb-2 bg-forest text-white">İdgam bi-Ghunne Örneği</Badge>
-                    <Card className="bg-gradient-to-br from-forest/5 to-forest/10 border-forest/20">
-                      <CardContent className="pt-6 text-center">
-                        <p className="text-4xl md:text-5xl leading-loose font-quran mb-4 text-ink dark:text-pearl" dir="rtl">
+                    <Badge className="mb-3 bg-[#1A342E] text-white text-base px-4 py-2">İdgam bi-Ghunne Örneği</Badge>
+                    <Card className="bg-[#1A342E]/5 dark:bg-[#1A342E]/20 border-[#1A342E]/30">
+                      <CardContent className="pt-8 pb-8 text-center">
+                        <p className="text-5xl md:text-6xl leading-loose font-arabic text-foreground mb-6" dir="rtl">
                           {verse1.text_uthmani}
                         </p>
-                        <Badge variant="outline" className="mt-4">Zilzal 99:7</Badge>
+                        <Badge variant="outline" className="text-base">Zilzal 99:7</Badge>
                       </CardContent>
                     </Card>
-                    <Card className="mt-2 bg-sage border-forest/20">
+                    <Card className="mt-3 bg-[#EBEEE4] dark:bg-[#1A342E]/40 border-[#1A342E]/20">
                       <CardContent className="pt-4">
-                        <p className="text-base text-ink dark:text-pearl">
-                          <strong className="text-forest">İdgam:</strong> <span className="font-quran text-xl" dir="rtl">مَن يَعْمَلْ</span> (men ya'mel)
+                        <p className="text-base">
+                          <strong className="text-[#1A342E] dark:text-[#86AFA6]">İdgam:</strong>{' '}
+                          <span className="font-arabic text-2xl mx-1" dir="rtl">مَن يَعْمَلْ</span> 
+                          <span className="text-muted-foreground">(men ya'mel)</span>
                           <br />
-                          <span className="font-quran text-lg" dir="rtl">نْ + ي</span> → <strong>Nun Sakin</strong> + <strong>Ye harfi</strong> 
-                          → Ghunne ile birleştir
+                          <span className="font-arabic text-xl mx-1" dir="rtl">نْ + ي</span> → 
+                          <strong> Nun Sakin</strong> + <strong>Ye harfi</strong> → Ghunne ile birleştir
                         </p>
                       </CardContent>
                     </Card>
@@ -248,22 +250,24 @@ export default async function IdghamLessonPage() {
                 {/* Idgham bila-ghunne example */}
                 {verse2 && (
                   <div>
-                    <Badge className="mb-2 bg-royal-blue text-white">İdgam bila-Ghunne Örneği</Badge>
-                    <Card className="bg-gradient-to-br from-royal-blue/5 to-royal-blue/10 border-royal-blue/20">
-                      <CardContent className="pt-6 text-center">
-                        <p className="text-4xl md:text-5xl leading-loose font-quran mb-4 text-ink dark:text-pearl" dir="rtl">
+                    <Badge className="mb-3 bg-[#235AF3] text-white text-base px-4 py-2">İdgam bila-Ghunne Örneği</Badge>
+                    <Card className="bg-[#235AF3]/5 dark:bg-[#235AF3]/20 border-[#235AF3]/30">
+                      <CardContent className="pt-8 pb-8 text-center">
+                        <p className="text-5xl md:text-6xl leading-loose font-arabic text-foreground mb-6" dir="rtl">
                           {verse2.text_uthmani}
                         </p>
-                        <Badge variant="outline" className="mt-4">Bakara 2:5</Badge>
+                        <Badge variant="outline" className="text-base">Bakara 2:5</Badge>
                       </CardContent>
                     </Card>
-                    <Card className="mt-2 bg-sage border-royal-blue/20">
+                    <Card className="mt-3 bg-[#EBEEE4] dark:bg-[#235AF3]/20 border-[#235AF3]/20">
                       <CardContent className="pt-4">
-                        <p className="text-base text-ink dark:text-pearl">
-                          <strong className="text-royal-blue">İdgam:</strong> <span className="font-quran text-xl" dir="rtl">مِن رَّبِّهِمْ</span> (min rabbihim)
+                        <p className="text-base">
+                          <strong className="text-[#235AF3]">İdgam:</strong>{' '}
+                          <span className="font-arabic text-2xl mx-1" dir="rtl">مِن رَّبِّهِمْ</span>
+                          <span className="text-muted-foreground">(min rabbihim)</span>
                           <br />
-                          <span className="font-quran text-lg" dir="rtl">نْ + ر</span> → <strong>Nun Sakin</strong> + <strong>Ra harfi</strong> 
-                          → Ghunne OLMADAN birleştir
+                          <span className="font-arabic text-xl mx-1" dir="rtl">نْ + ر</span> → 
+                          <strong> Nun Sakin</strong> + <strong>Ra harfi</strong> → Ghunne OLMADAN birleştir
                         </p>
                       </CardContent>
                     </Card>
@@ -274,23 +278,23 @@ export default async function IdghamLessonPage() {
           )}
 
           {/* Practice Section */}
-          <Card className="border-pale-blue/20">
+          <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-ink dark:text-pearl">
-                <SportsEsportsIcon className="text-royal-blue" />
+              <CardTitle className="flex items-center gap-2">
+                <SportsEsportsIcon className="text-[#235AF3]" />
                 Pratik Yapın
               </CardTitle>
-              <CardDescription>
+              <CardDescription className="text-base">
                 Aşağıdaki kelimelerde İdgam kuralını bulun ve hangi türü olduğunu belirleyin
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="space-y-3">
-                <p className="text-sm font-semibold text-chalkboard mb-3">
-                  <Badge className="bg-forest text-white mr-2">Bi-Ghunne</Badge> 
-                  <Badge className="bg-royal-blue text-white">Bila-Ghunne</Badge>
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div className="space-y-4">
+                <div className="flex gap-2">
+                  <Badge className="bg-[#1A342E] text-white px-4 py-2">Bi-Ghunne</Badge> 
+                  <Badge className="bg-[#235AF3] text-white px-4 py-2">Bila-Ghunne</Badge>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {[
                     { word: 'مَن يَقُولُ', type: 'bi-ghunne', romanization: 'men yaqulu', meaning: 'kim der' },
                     { word: 'مِن رَّبِّكَ', type: 'bila-ghunne', romanization: 'min rabbike', meaning: 'Rabbinden' },
@@ -303,15 +307,15 @@ export default async function IdghamLessonPage() {
                       key={idx}
                       className={`hover:scale-105 transition-all cursor-pointer ${
                         item.type === 'bi-ghunne' 
-                          ? 'bg-forest/10 border-forest/30'
-                          : 'bg-royal-blue/10 border-royal-blue/30'
+                          ? 'bg-[#1A342E]/10 dark:bg-[#1A342E]/30 border-[#1A342E]/30'
+                          : 'bg-[#235AF3]/10 dark:bg-[#235AF3]/30 border-[#235AF3]/30'
                       }`}
                     >
-                      <CardContent className="pt-4 text-center">
-                        <p className="text-3xl font-quran mb-2 text-ink dark:text-pearl" dir="rtl">{item.word}</p>
-                        <p className="text-xs text-chalkboard">{item.romanization}</p>
-                        <p className="text-xs text-chalkboard mt-1">{item.meaning}</p>
-                        <Badge className={`mt-2 ${item.type === 'bi-ghunne' ? 'bg-forest text-white' : 'bg-royal-blue text-white'}`}>
+                      <CardContent className="pt-6 text-center">
+                        <p className="text-4xl font-arabic mb-3 text-foreground" dir="rtl">{item.word}</p>
+                        <p className="text-sm text-muted-foreground">{item.romanization}</p>
+                        <p className="text-sm text-muted-foreground font-semibold mt-1">{item.meaning}</p>
+                        <Badge className={`mt-3 ${item.type === 'bi-ghunne' ? 'bg-[#1A342E] text-white' : 'bg-[#235AF3] text-white'}`}>
                           {item.type === 'bi-ghunne' ? 'Bi-Ghunne' : 'Bila-Ghunne'}
                         </Badge>
                       </CardContent>
@@ -323,19 +327,19 @@ export default async function IdghamLessonPage() {
           </Card>
 
           {/* Quiz Teaser */}
-          <Card className="bg-gradient-to-r from-royal-blue to-navy border-none text-white">
-            <CardContent className="pt-6">
-              <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-                <div className="flex items-start gap-3">
-                  <QuizIcon sx={{ fontSize: 40 }} />
+          <Card className="bg-gradient-to-r from-[#235AF3] to-[#002EAD] border-none text-white">
+            <CardContent className="pt-8 pb-8">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div className="flex items-start gap-4">
+                  <QuizIcon sx={{ fontSize: 48 }} />
                   <div>
                     <h3 className="text-2xl font-bold mb-2">Quiz ile Bilginizi Test Edin!</h3>
-                    <p className="opacity-90">
+                    <p className="text-lg opacity-95">
                       İdgam kuralı hakkında öğrendiklerinizi pekiştirin
                     </p>
                   </div>
                 </div>
-                <Button size="lg" variant="secondary" className="shrink-0 bg-white text-royal-blue hover:bg-pale-blue">
+                <Button size="lg" variant="secondary" className="shrink-0 bg-white text-[#235AF3] hover:bg-[#DBE4FF] text-lg px-8">
                   Quiz'e Başla →
                 </Button>
               </div>
@@ -348,7 +352,7 @@ export default async function IdghamLessonPage() {
             <Button asChild variant="outline" size="lg">
               <Link href="/lessons">← Ders Listesi</Link>
             </Button>
-            <Button asChild size="lg" className="bg-royal-blue hover:bg-navy">
+            <Button asChild size="lg" className="bg-[#235AF3] hover:bg-[#002EAD] text-white">
               <Link href="/lessons/noon-rules/ihfa">Sonraki: İhfa →</Link>
             </Button>
           </div>

@@ -1,67 +1,85 @@
 @import "tailwindcss";
 
+/* 
+  Brand Colors - Quran Learning Platform
+  Light mode: Pearl backgrounds, Ink text
+  Dark mode: Ink backgrounds, Pearl text
+*/
+
 @layer base {
   :root {
-    /* Brand Colors */
-    --royal-blue: 223 95% 55%;
-    --navy: 223 100% 34%;
-    --pale-blue: 223 100% 93%;
-    --tan: 36 33% 95%;
-    --pearl: 40 50% 98%;
-    --ink: 0 0% 12%;
+    /* ===== BRAND COLORS ===== */
+    /* Primary */
+    --royal-blue: #235AF3;
+    --navy: #002EAD;
+    --pale-blue: #DBE4FF;
     
-    /* Secondary Colors */
-    --forest: 167 45% 16%;
-    --chili: 15 98% 53%;
-    --lavender: 276 34% 83%;
-    --chalkboard: 160 19% 61%;
-    --sage: 72 23% 93%;
-    --neon: 62 98% 72%;
+    /* Neutrals */
+    --pearl: #FAF9F6;
+    --tan: #F5F3EF;
+    --ink: #1E1E1E;
+    
+    /* Accent */
+    --forest: #1A342E;
+    --chili: #FC440F;
+    --lavender: #D1BCE3;
+    --chalkboard: #86AFA6;
+    --sage: #EBEEE4;
+    --neon: #F5FE76;
 
-    /* Light Mode Theme */
-    --background: var(--pearl);
-    --foreground: var(--ink);
-    --card: 0 0% 100%;
-    --card-foreground: var(--ink);
-    --popover: 0 0% 100%;
-    --popover-foreground: var(--ink);
-    --primary: var(--royal-blue);
-    --primary-foreground: 0 0% 100%;
-    --secondary: var(--pale-blue);
-    --secondary-foreground: var(--navy);
-    --muted: var(--sage);
-    --muted-foreground: var(--chalkboard);
-    --accent: var(--pale-blue);
-    --accent-foreground: var(--navy);
-    --destructive: var(--chili);
-    --destructive-foreground: 0 0% 100%;
+    /* ===== SEMANTIC COLORS (CSS Variables) ===== */
+    --background: 250 50% 98%;        /* Pearl */
+    --foreground: 0 0% 12%;           /* Ink */
+    
+    --card: 0 0% 100%;                /* White */
+    --card-foreground: 0 0% 12%;      /* Ink */
+    
+    --primary: 223 95% 55%;           /* Royal Blue */
+    --primary-foreground: 0 0% 100%;  /* White */
+    
+    --secondary: 223 100% 93%;        /* Pale Blue */
+    --secondary-foreground: 223 100% 34%; /* Navy */
+    
+    --muted: 72 23% 93%;              /* Sage */
+    --muted-foreground: 160 19% 61%; /* Chalkboard */
+    
+    --accent: 167 45% 16%;            /* Forest */
+    --accent-foreground: 0 0% 100%;   /* White */
+    
+    --destructive: 15 98% 53%;        /* Chili */
+    --destructive-foreground: 0 0% 100%; /* White */
+    
     --border: 223 20% 90%;
     --input: 223 20% 90%;
-    --ring: var(--royal-blue);
+    --ring: 223 95% 55%;              /* Royal Blue */
     --radius: 0.75rem;
   }
 
   .dark {
-    /* Dark Mode Theme */
-    --background: var(--ink);
-    --foreground: var(--pearl);
-    --card: 0 0% 16%;
-    --card-foreground: var(--pearl);
-    --popover: 0 0% 16%;
-    --popover-foreground: var(--pearl);
-    --primary: var(--royal-blue);
-    --primary-foreground: 0 0% 100%;
-    --secondary: var(--navy);
-    --secondary-foreground: var(--pale-blue);
-    --muted: var(--forest);
-    --muted-foreground: var(--chalkboard);
-    --accent: var(--navy);
-    --accent-foreground: var(--pale-blue);
-    --destructive: var(--chili);
-    --destructive-foreground: 0 0% 100%;
+    --background: 0 0% 12%;           /* Ink */
+    --foreground: 250 50% 98%;        /* Pearl */
+    
+    --card: 0 0% 18%;                 /* Slightly lighter than bg */
+    --card-foreground: 250 50% 98%;   /* Pearl */
+    
+    --primary: 223 95% 55%;           /* Royal Blue (same) */
+    --primary-foreground: 0 0% 100%;  /* White */
+    
+    --secondary: 223 100% 34%;        /* Navy */
+    --secondary-foreground: 223 100% 93%; /* Pale Blue */
+    
+    --muted: 167 45% 16%;             /* Forest (dark green) */
+    --muted-foreground: 160 19% 61%; /* Chalkboard */
+    
+    --accent: 167 45% 20%;            /* Forest lighter */
+    --accent-foreground: 250 50% 98%; /* Pearl */
+    
+    --destructive: 15 98% 53%;        /* Chili */
+    --destructive-foreground: 0 0% 100%; /* White */
+    
     --border: 0 0% 25%;
     --input: 0 0% 25%;
-    --ring: var(--royal-blue);
+    --ring: 223 95% 55%;
   }
 }
 
@@ -69,9 +87,23 @@
   * {
     border-color: hsl(var(--border));
   }
+  
   body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
     font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: system-ui, -apple-system, sans-serif;
   }
+  
+  /* Force high contrast for text */
+  p, span, li, div {
+    color: inherit;
+  }
+}
+
+/* Arabic/Quran Font Loading */
+@font-face {
+  font-family: 'Amiri Quran';
+  src: local('Amiri Quran'), local('Traditional Arabic');
+  font-display: swap;
 }
