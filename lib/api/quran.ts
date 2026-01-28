@@ -119,7 +119,7 @@ export async function getVerses(
   const {
     perPage = 10,
     page = 1,
-    translations = [161], // Default Turkish translation
+    translations = [77], // Default Turkish translation (Diyanet)
     words = true,
     audio,
   } = options;
@@ -172,7 +172,7 @@ export async function getVerse(
     audio?: number;
   } = {}
 ): Promise<Verse> {
-  const { translations = [161], words = true, audio } = options;
+  const { translations = [77], words = true, audio } = options;
 
   try {
     const params = new URLSearchParams({
