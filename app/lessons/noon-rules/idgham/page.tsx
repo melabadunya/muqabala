@@ -19,8 +19,8 @@ export default async function IdghamLessonPage() {
   let verse2 = null; // من ربهم - Bakara 2:5
   
   try {
-    verse1 = await getVerse('99:7', { translations: [77], words: true });
-    verse2 = await getVerse('2:5', { translations: [77], words: true });
+    verse1 = await getVerse('99:7', { words: true });
+    verse2 = await getVerse('2:5', { words: true });
   } catch (error) {
     console.error('Error fetching verses:', error);
   }
@@ -229,11 +229,7 @@ export default async function IdghamLessonPage() {
                         <p className="text-4xl md:text-5xl leading-loose font-quran mb-4 text-ink dark:text-pearl" dir="rtl">
                           {verse1.text_uthmani}
                         </p>
-                        <Separator className="my-4" />
-                        <p className="text-sm text-chalkboard mb-3">
-                          {verse1.translations && verse1.translations[0]?.text}
-                        </p>
-                        <Badge variant="outline">Zilzal 99:7</Badge>
+                        <Badge variant="outline" className="mt-4">Zilzal 99:7</Badge>
                       </CardContent>
                     </Card>
                     <Card className="mt-2 bg-sage border-forest/20">
@@ -258,11 +254,7 @@ export default async function IdghamLessonPage() {
                         <p className="text-4xl md:text-5xl leading-loose font-quran mb-4 text-ink dark:text-pearl" dir="rtl">
                           {verse2.text_uthmani}
                         </p>
-                        <Separator className="my-4" />
-                        <p className="text-sm text-chalkboard mb-3">
-                          {verse2.translations && verse2.translations[0]?.text}
-                        </p>
-                        <Badge variant="outline">Bakara 2:5</Badge>
+                        <Badge variant="outline" className="mt-4">Bakara 2:5</Badge>
                       </CardContent>
                     </Card>
                     <Card className="mt-2 bg-sage border-royal-blue/20">

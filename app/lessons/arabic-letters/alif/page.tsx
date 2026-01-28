@@ -16,7 +16,7 @@ export default async function AlifLessonPage() {
   let verse = null;
   
   try {
-    verse = await getVerse('1:1', { translations: [77], words: true });
+    verse = await getVerse('1:1', { words: true });
   } catch (error) {
     console.error('Error fetching verse:', error);
   }
@@ -161,11 +161,7 @@ export default async function AlifLessonPage() {
                     <p className="text-4xl md:text-5xl leading-loose font-quran mb-4 text-ink dark:text-pearl" dir="rtl">
                       {verse.text_uthmani}
                     </p>
-                    <Separator className="my-4" />
-                    <p className="text-base text-chalkboard mb-3">
-                      {verse.translations && verse.translations[0]?.text}
-                    </p>
-                    <Badge variant="outline">Fatiha 1:1</Badge>
+                    <Badge variant="outline" className="mt-4">Fatiha 1:1</Badge>
                   </CardContent>
                 </Card>
                 <Card className="bg-sage border-royal-blue/20">
